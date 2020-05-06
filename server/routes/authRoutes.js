@@ -9,4 +9,14 @@ module.exports = (app) => {
   );
 
   app.get('/auth/google/callback', passport.authenticate('google'));
+
+  app.get('/api/logout', (req, res) => {
+    // in that case req is passport. Kill the cookie and remove user from session
+    req.logout();
+    res.send(req.user);
+  });
+
+  app.get('/api/current_user', (req, res) => {
+    res.send(req.user);
+  });
 };
