@@ -24,6 +24,7 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback',
+      proxy: true, // Relevant for issue with http and https redirection
     },
     (accessToken, refreshToken, profile, done) => {
       // Check if user might be already added to DB ( Promise )
